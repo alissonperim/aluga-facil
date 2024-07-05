@@ -62,7 +62,7 @@ export class PersonalData extends Base {
             unique: true,
         }
     )
-    document!: string
+    protected document!: string
 
 
     @Column(

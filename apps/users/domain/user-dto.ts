@@ -1,4 +1,4 @@
-import { User } from './entity/user'
+import { User } from '@entities/user'
 import { IUser } from '@packages/types'
 import { IListResponse } from '@shared/utils/list-response'
 
@@ -7,6 +7,7 @@ export const userDto = ({
     name,
     email,
     birthDate,
+    address,
     createdAt,
     document,
     lastName,
@@ -24,6 +25,7 @@ export const userDto = ({
         document,
         lastName,
         maritalStatus,
+        address,
         phoneNumber,
         updatedAt,
         deletedAt,

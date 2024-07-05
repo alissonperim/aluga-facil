@@ -2,8 +2,8 @@
 
 ## Informações necessárias para efetuar cadastro
 
-- name <br/>
-  description: Nome do usuário contendo no máximo 120 caractéres
+- renter <br/>
+  description: id do locatário
 - email <br/>
   description: Email do usuário, será utilizado para efetuar o login na aplicação
 - phoneNumber <br/>
@@ -18,4 +18,3 @@
   description: Propriedades de aluguel
 
 ## Campos obrigatórios
-
