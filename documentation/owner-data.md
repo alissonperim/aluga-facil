@@ -14,8 +14,12 @@
   description: Endereço do locatário
 - Contracts: <br />
   description: Contratos criados por esse locatário
-- RenterProperties: <br />
+- Properties: <br />
   description: Propriedades de aluguel
+- RealState: <br />
+  description: Id da imobiliária, caso tenha sido registrado através de uma.
+- BankAccount: <br />
+  description: Id da conta registrada com os dados bancários.
 
 ## Campos obrigatórios
 

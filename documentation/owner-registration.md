@@ -6,7 +6,7 @@ O locador é o nosso usuário final.
 ## Casos de Uso
 
 ### Cadastro de Usuário
-**Descrição**: Permite que um novo locador se cadastre no sistema. Esse cadastro pode ser de pessoa física ou pessoa jurídica. Caso seja de pessoa física apenas o locador terá acesso a administrar os seus aluguéis. Caso seja pessoa jurídica, operadores deverão ser cadastrados esses operadores terão acesso para administrar os aluguéis da empresa.
+**Descrição**: Permite que um novo proprietário se cadastre no sistema. Esse cadastro pode ser de pessoa física ou pessoa jurídica. Caso seja de pessoa física apenas o locador terá acesso a administrar os seus aluguéis. Caso seja pessoa jurídica, operadores deverão ser cadastrados esses operadores terão acesso para administrar os aluguéis da empresa. O cadastro de proprietário também poderá ser realizado por imobiliárias, não tendo efeito de login
 
 - **Ator Principal**: Locador
 - **Atores Secundários**: N/A
