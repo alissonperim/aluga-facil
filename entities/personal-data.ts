@@ -7,6 +7,7 @@ export class PersonalData extends Base {
         {
             type: 'varchar',
             length: 120,
+            nullable: true
         }
     )
     name!: string
@@ -16,6 +17,7 @@ export class PersonalData extends Base {
             name: 'last_name',
             type: 'varchar',
             length: 120,
+            nullable: true
         }
     )
     lastName!: string

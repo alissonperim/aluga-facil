@@ -1,5 +1,7 @@
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToMany } from 'typeorm'
 import { PersonalData } from './personal-data'
+import { Property } from './property'
+import { Contract } from './contract'
 
 @Entity('renters')
 export class Renter extends PersonalData {
@@ -12,16 +14,6 @@ export class Renter extends PersonalData {
         }
     )
     document!: string
-
-    @Column(
-        {
-            name: 'last_name',
-            type: 'varchar',
-            length: 120,
-            nullable: true,
-        }
-    )
-    lastName!: string
 
     @Column(
         {
@@ -41,37 +33,23 @@ export class Renter extends PersonalData {
         }
     )
     fantasyName!: string
-    
-    @Column(
+
+    @OneToMany(() => Contract, contract => contract.renter)
+    @JoinColumn(
         {
-            name: 'birth_date',
-            type: 'date',
-            nullable: true,
+            name: 'contracts',
         }
     )
-    birthDate!: Date
+    contracts!: Contract[]
+    
+    @OneToMany(() => Property, property => property.renter)
+    @JoinColumn(
+        {
+            name: 'rent_properties',
+        }
+    )
+    rentProperties!: Property[]
 
-    // @OneToMany(() => Contract)
-    // @Column(
-    //     {
-    //         unique: true,
-    //     }
-    // )
-    // @JoinColumn(
-    //     {
-    //         name: 'contracts',
-    //     }
-    // )
-    // contracts!: Contract[]
-
-    // @OneToMany(() => Property)
-    // @Column()
-    // @JoinColumn(
-    //     {
-    //         name: 'properties',
-    //     }
-    // )
-    // properties!: Property[]
 
     // @OneToMany(() => Operator)
     // @Column(
