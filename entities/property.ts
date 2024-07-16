@@ -4,6 +4,7 @@ import { Address } from './address'
 import { PropertyType } from '@packages/types/property'
 import { Owner } from './owner'
 import { Renter } from './renter'
+import { Contract } from './contract'
 
 @Entity('properties')
 export class Property extends Base {
@@ -15,6 +16,9 @@ export class Property extends Base {
 
     @ManyToOne(() => Renter, renter => renter.rentProperties)
     renter!: Renter
+
+    @ManyToOne(() => Contract, contract => contract.properties)
+    contract!: Contract
 
     @Column(
         {

@@ -35,11 +35,6 @@ export class Renter extends PersonalData {
     fantasyName!: string
 
     @OneToMany(() => Contract, contract => contract.renter)
-    @JoinColumn(
-        {
-            name: 'contracts',
-        }
-    )
     contracts!: Contract[]
     
     @OneToMany(() => Property, property => property.renter)
