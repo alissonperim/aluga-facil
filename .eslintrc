@@ -12,8 +12,8 @@
         "eslintIntegration": true,
         "printWidth": 120,
         "endOfLine": "auto"
-      },
-    ],
+      }
+    ]
   },
   "parser": "@typescript-eslint/parser",
   "extends": ["plugin:prettier/recommended"]
