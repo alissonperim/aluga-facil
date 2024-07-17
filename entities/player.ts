@@ -1,6 +1,5 @@
-import { Column, OneToMany } from 'typeorm'
+import { Column } from 'typeorm'
 import { Base } from './base'
-import { Fee } from './fee'
 
 export class Player extends Base {
     @Column(
@@ -12,6 +11,6 @@ export class Player extends Base {
     )
     externalId!: string
 
-    @OneToMany(() => Fee, fee => fee.player)
-    fees!: Fee[]
+    // @OneToMany(() => Fee, fee => fee.player)
+    // fees!: Fee[]
 }

@@ -1,8 +1,7 @@
-import { Column, Entity, ManyToMany, ManyToOne } from 'typeorm'
+import { Column, Entity, ManyToMany } from 'typeorm'
 import { Base } from './base'
 import { FeeType } from '@packages/types/fee'
 import { Contract } from './contract'
-import { Player } from './player'
 
 @Entity('fees')
 export class Fee extends Base {
@@ -24,9 +23,7 @@ export class Fee extends Base {
 
     @Column(
         {
-            type: 'float',
-            precision: 5,
-            scale: 2,
+            type: 'decimal',
         }
     )
     amount!: number
@@ -42,6 +39,6 @@ export class Fee extends Base {
     @ManyToMany(() => Contract, contract => contract.fees)
     contracts!: Contract[]
 
-    @ManyToOne(() => Player, player => player.fees)
-    player!: Player
+    // @ManyToOne(() => Player, player => player.fees)
+    // player!: Player
 }

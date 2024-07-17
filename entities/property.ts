@@ -22,7 +22,7 @@ export class Property extends Base {
 
     @Column(
         {
-            type: 'double',
+            type: 'decimal',
         }
     )
     dimension!: number
@@ -37,7 +37,7 @@ export class Property extends Base {
 
     @Column(
         {
-            type: 'double',
+            type: 'decimal',
             name: 'rental_price'
         }
     )
@@ -46,6 +46,7 @@ export class Property extends Base {
     @Column(
         {
             type: 'enum',
+            enum: PropertyType,
         }
     )
     type!: PropertyType

@@ -2,6 +2,11 @@ import 'dotenv/config'
 import { User } from '@entities/user'
 import { DataSource } from 'typeorm'
 import { Address } from '@entities/address'
+import { Owner } from '@entities/owner'
+import { Renter } from '@entities/renter'
+import { Fee } from '@entities/fee'
+import { Property } from '@entities/property'
+import { Contract } from '@entities/contract'
 
 const {
     DB_NAME,
@@ -21,7 +26,12 @@ export const AppDataSource = () => {
         database: DB_NAME,
         entities: [
             User,
-            Address
+            Address,
+            Owner,
+            Renter,
+            Fee,
+            Property,
+            Contract
         ],
         migrations: [
             'infra/migrations/*.ts'
@@ -48,6 +58,11 @@ export default new DataSource({
     entities: [
         User,
         Address,
+        Owner,
+        Renter,
+        Fee,
+        Property,
+        Contract
     ],
     migrations: [
         'infra/migrations/*.ts'
