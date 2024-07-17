@@ -1,5 +1,10 @@
 import { CreateUserRepository, GetUserRepository, ListUsersRepository, UpdateUserRepository } from '@users/repositories'
-import { ICreateUserRepository, IGetUserRepository, IListUsersRepository, IUpdateUserRepository } from '@users/repositories/contracts'
+import {
+  ICreateUserRepository,
+  IGetUserRepository,
+  IListUsersRepository,
+  IUpdateUserRepository,
+} from '@users/repositories/contracts'
 import { CreateUserUseCase } from '@users/usecases/create-user'
 import { ICreateUserUseCase } from '@users/usecases/contracts/create-user'
 import { container } from 'tsyringe'
@@ -14,7 +19,7 @@ export class UsersDependencyInjection {
     container.registerSingleton<IListUsersUseCase>('ListUsersUseCase', ListUsersUseCase)
     container.registerSingleton<IGetUserUseCase>('GetUserUseCase', GetUserUseCase)
     container.registerSingleton<IUpdateUserUseCase>('UpdateUserUseCase', UpdateUserUseCase)
-    
+
     // Repositories
     container.registerSingleton<ICreateUserRepository>('CreateUserRepository', CreateUserRepository)
     container.registerSingleton<IListUsersRepository>('ListUsersRepository', ListUsersRepository)

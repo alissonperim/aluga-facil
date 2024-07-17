@@ -6,9 +6,9 @@ import { Renter } from '@entities/renter'
 
 @injectable()
 export class GetRenterRepository implements IGetRenterRepository {
-    private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
-    
-    async get(id: string): Promise<Renter> {
-        return this.context.findOne({ where: { id }})
-    }
+  private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
+
+  async get(id: string): Promise<Renter> {
+    return this.context.findOne({ where: { id } })
+  }
 }

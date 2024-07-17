@@ -8,62 +8,50 @@ import { Contract } from './contract'
 
 @Entity('properties')
 export class Property extends Base {
-    @OneToOne(() => Address, { eager: true, cascade: true })
-    address!: Address
+  @OneToOne(() => Address, { eager: true, cascade: true })
+  address!: Address
 
-    @ManyToMany(() => Owner, owner => owner.properties)
-    owners!: Owner[]
+  @ManyToMany(() => Owner, owner => owner.properties)
+  owners!: Owner[]
 
-    @ManyToOne(() => Renter, renter => renter.rentProperties)
-    renter!: Renter
+  @ManyToOne(() => Renter, renter => renter.rentProperties)
+  renter!: Renter
 
-    @ManyToOne(() => Contract, contract => contract.properties)
-    contract!: Contract
+  @ManyToOne(() => Contract, contract => contract.properties)
+  contract!: Contract
 
-    @Column(
-        {
-            type: 'decimal',
-        }
-    )
-    dimension!: number
+  @Column({
+    type: 'decimal',
+  })
+  dimension!: number
 
-    @Column(
-        {
-            type: 'varchar',
-            length: 360,
-        }
-    )
-    description!: string
+  @Column({
+    type: 'varchar',
+    length: 360,
+  })
+  description!: string
 
-    @Column(
-        {
-            type: 'decimal',
-            name: 'rental_price'
-        }
-    )
-    rentalPrice!: number
+  @Column({
+    type: 'decimal',
+    name: 'rental_price',
+  })
+  rentalPrice!: number
 
-    @Column(
-        {
-            type: 'enum',
-            enum: PropertyType,
-        }
-    )
-    type!: PropertyType
+  @Column({
+    type: 'enum',
+    enum: PropertyType,
+  })
+  type!: PropertyType
 
-    @Column(
-        {
-            type: 'boolean',
-            name: 'insurance_required',
-        }
-    )
-    insuranceRequired!: boolean
+  @Column({
+    type: 'boolean',
+    name: 'insurance_required',
+  })
+  insuranceRequired!: boolean
 
-    @Column(
-        {
-            type: 'boolean',
-            name: 'guarantor_required',
-        }
-    )
-    guarantorRequired!: boolean
+  @Column({
+    type: 'boolean',
+    name: 'guarantor_required',
+  })
+  guarantorRequired!: boolean
 }

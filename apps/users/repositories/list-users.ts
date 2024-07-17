@@ -6,8 +6,8 @@ import { injectable } from 'tsyringe'
 
 @injectable()
 export class ListUsersRepository implements IListUsersRepository {
-    private readonly context: Repository<User> = DataSourceSingleton.getRepositoy(User)
-    async list(): Promise<User[]> {
-        return this.context.find()
-    }
+  private readonly context: Repository<User> = DataSourceSingleton.getRepositoy(User)
+  async list(): Promise<User[]> {
+    return this.context.find()
+  }
 }

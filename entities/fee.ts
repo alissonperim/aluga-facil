@@ -5,40 +5,32 @@ import { Contract } from './contract'
 
 @Entity('fees')
 export class Fee extends Base {
-    @Column(
-        {
-            type: 'varchar',
-            length: 120,
-        }
-    )
-    description!: string
+  @Column({
+    type: 'varchar',
+    length: 120,
+  })
+  description!: string
 
-    @Column(
-        {
-            type: 'varchar',
-            length: 120,
-        }
-    )
-    name!: string
+  @Column({
+    type: 'varchar',
+    length: 120,
+  })
+  name!: string
 
-    @Column(
-        {
-            type: 'decimal',
-        }
-    )
-    amount!: number
+  @Column({
+    type: 'decimal',
+  })
+  amount!: number
 
-    @Column(
-        {
-            type: 'enum',
-            enum: FeeType
-        }
-    )
-    type!: string
+  @Column({
+    type: 'enum',
+    enum: FeeType,
+  })
+  type!: string
 
-    @ManyToMany(() => Contract, contract => contract.fees)
-    contracts!: Contract[]
+  @ManyToMany(() => Contract, contract => contract.fees)
+  contracts!: Contract[]
 
-    // @ManyToOne(() => Player, player => player.fees)
-    // player!: Player
+  // @ManyToOne(() => Player, player => player.fees)
+  // player!: Player
 }

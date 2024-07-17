@@ -12,11 +12,12 @@ import { updateUserHandler } from './handlers/update'
 const router = Router()
 
 router.post('/', schemaValidations(createUserSchema), openDbConnection, createUserHandler)
-router.put('/:id',
-    pathParamsValidations(updateUserPathSchema),
-    schemaValidations(updateUserSchema),
-    openDbConnection,
-    updateUserHandler
+router.put(
+  '/:id',
+  pathParamsValidations(updateUserPathSchema),
+  schemaValidations(updateUserSchema),
+  openDbConnection,
+  updateUserHandler,
 )
 router.get('/:id', pathParamsValidations(getUserSchema), openDbConnection, getUserHandler)
 router.get('/', openDbConnection, listUsersHandler)

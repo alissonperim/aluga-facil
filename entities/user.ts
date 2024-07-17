@@ -5,16 +5,14 @@ import { PersonalData } from './personal-data'
 
 @Entity('users')
 export class User extends PersonalData {
-    @Column(
-        {
-            type: 'enum',
-            enum: MaritalStatus
-        }
-    )
-    maritalStatus!: MaritalStatus
+  @Column({
+    type: 'enum',
+    enum: MaritalStatus,
+  })
+  maritalStatus!: MaritalStatus
 
-    @BeforeInsert()
-    protected generateId() {
-        this.id = ulidGenerator(DOMAIN.user)
-    }
+  @BeforeInsert()
+  protected generateId() {
+    this.id = ulidGenerator(DOMAIN.user)
+  }
 }

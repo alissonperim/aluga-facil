@@ -6,14 +6,14 @@ import { userDto } from '@users/domain/user-dto'
 
 @injectable()
 export class GetUserUseCase implements IGetUserUseCase {
-    constructor(
-        @inject('GetUserRepository')
-        private readonly repository: IGetUserRepository
-    ){}
+  constructor(
+    @inject('GetUserRepository')
+    private readonly repository: IGetUserRepository,
+  ) {}
 
-    async execute (id: string): Promise<IUser> {
-        const user = await this.repository.get(id)
+  async execute(id: string): Promise<IUser> {
+    const user = await this.repository.get(id)
 
-        return userDto(user)
-    }
+    return userDto(user)
+  }
 }

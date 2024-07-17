@@ -1,5 +1,5 @@
 import { Renter } from '@entities/renter'
 
 export interface IGetRenterRepository {
-    get(id: string): Promise<Renter>
+  get(id: string): Promise<Renter>
 }

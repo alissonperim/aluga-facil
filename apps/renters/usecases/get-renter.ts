@@ -5,14 +5,14 @@ import { IGetRenterRepository } from '../repositories/contracts'
 
 @injectable()
 export class GetRenterUseCase implements IGetRenterUseCase {
-    constructor(
-        @inject('GetRenterRepository')
-        private readonly repository: IGetRenterRepository
-    ){}
+  constructor(
+    @inject('GetRenterRepository')
+    private readonly repository: IGetRenterRepository,
+  ) {}
 
-    async execute (id: string): Promise<IRenter> {
-        const renter = await this.repository.get(id)
+  async execute(id: string): Promise<IRenter> {
+    const renter = await this.repository.get(id)
 
-        return renter as IRenter
-    }
+    return renter as IRenter
+  }
 }

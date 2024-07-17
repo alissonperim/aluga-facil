@@ -6,9 +6,9 @@ import { IGetUserRepository } from './contracts'
 
 @injectable()
 export class GetUserRepository implements IGetUserRepository {
-    private readonly context: Repository<User> = DataSourceSingleton.getRepositoy(User)
-    
-    async get(id: string): Promise<User> {
-        return this.context.findOne({ where: { id }})
-    }
+  private readonly context: Repository<User> = DataSourceSingleton.getRepositoy(User)
+
+  async get(id: string): Promise<User> {
+    return this.context.findOne({ where: { id } })
+  }
 }

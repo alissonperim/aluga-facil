@@ -9,25 +9,22 @@ import { Renter } from '@entities/renter'
 @injectable()
 export class CreateRenterRepository implements ICreateRenterRepository {
   private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
-  async create (data: ICreateUser): Promise<Renter> {
+  async create(data: ICreateUser): Promise<Renter> {
     const renter = this.context.create(data)
 
-    const renterExists = await this.context
-      .findOne(
+    const renterExists = await this.context.findOne({
+      where: [
         {
-          where: [
-            {
-              email: renter.email
-            },
-            {
-              document: renter.document
-            },
-            {
-              phoneNumber: renter.phoneNumber
-            }
-          ]
-        }
-      )
+          email: renter.email,
+        },
+        {
+          document: renter.document,
+        },
+        {
+          phoneNumber: renter.phoneNumber,
+        },
+      ],
+    })
 
     if (renterExists) throw new CreateException('Renter already exists')
 

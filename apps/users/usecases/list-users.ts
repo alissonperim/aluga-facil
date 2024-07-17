@@ -7,13 +7,13 @@ import { IListResponse } from '@shared/utils/list-response'
 
 @injectable()
 export class ListUsersUseCase implements IListUsersUseCase {
-    constructor(
-        @inject('ListUsersRepository')
-        private readonly listUsersRepository: IListUsersRepository
-    ){}
-    async execute(): Promise<IListResponse<IUser>> {
-        const users = await this.listUsersRepository.list()
+  constructor(
+    @inject('ListUsersRepository')
+    private readonly listUsersRepository: IListUsersRepository,
+  ) {}
+  async execute(): Promise<IListResponse<IUser>> {
+    const users = await this.listUsersRepository.list()
 
-        return listUsersDto(users)
-    }
+    return listUsersDto(users)
+  }
 }

@@ -4,7 +4,7 @@ import { Property } from './property'
 
 @Entity('owners')
 export class Owner extends PersonalData {
-    @ManyToMany(() => Property, property => property.owners)
-    @JoinTable()
-    properties!: Property[]
+  @ManyToMany(() => Property, property => property.owners)
+  @JoinTable()
+  properties!: Property[]
 }

@@ -8,7 +8,7 @@ import { IUser } from '@packages/types'
 export class CreateUserUseCase implements ICreateUserUseCase {
   constructor(
     @inject('CreateUserRepository')
-    private readonly repository: ICreateUserRepository
+    private readonly repository: ICreateUserRepository,
   ) {}
 
   async execute(data: ICreateUser): Promise<IUser> {

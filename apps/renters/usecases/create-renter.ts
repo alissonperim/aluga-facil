@@ -8,7 +8,7 @@ import { Renter } from '@entities/renter'
 export class CreateRenterUseCase implements ICreateRenterUseCase {
   constructor(
     @inject('CreateRenterReposistory')
-    private readonly repository: ICreateRenterRepository
+    private readonly repository: ICreateRenterRepository,
   ) {}
 
   async execute(data: ICreateRenter): Promise<Renter> {

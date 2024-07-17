@@ -6,8 +6,8 @@ import { Renter } from '@entities/renter'
 
 @injectable()
 export class ListRentersRepository implements IListRentersRepository {
-    private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
-    async list(): Promise<Renter[]> {
-        return this.context.find()
-    }
+  private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
+  async list(): Promise<Renter[]> {
+    return this.context.find()
+  }
 }

@@ -7,14 +7,14 @@ import { userDto } from '@users/domain/user-dto'
 
 @injectable()
 export class UpdateUserUseCase implements IUpdateUserUseCase {
-    constructor(
-        @inject('UpdateUserRepository')
-        private readonly repository: IUpdateUserRepository
-    ){}
-    
-    async execute (id: string, data: DeepPartial<IUser>): Promise<IUser> {
-        const user = await this.repository.update(id, data)
+  constructor(
+    @inject('UpdateUserRepository')
+    private readonly repository: IUpdateUserRepository,
+  ) {}
 
-        return userDto(user)
-    }
+  async execute(id: string, data: DeepPartial<IUser>): Promise<IUser> {
+    const user = await this.repository.update(id, data)
+
+    return userDto(user)
+  }
 }

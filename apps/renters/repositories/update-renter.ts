@@ -10,18 +10,15 @@ import { IRenter } from '@packages/types/renter'
 
 @injectable()
 export class UpdateRenterRepository implements IUpdateRenterRepository {
-    private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
+  private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
 
-    async update(id: string, data: DeepPartial<IRenter>): Promise<Renter> {
-        const query = updateDbSetQuery<DeepPartial<IRenter>>(data)
+  async update(id: string, data: DeepPartial<IRenter>): Promise<Renter> {
+    const query = updateDbSetQuery<DeepPartial<IRenter>>(data)
 
-        const update = await this.context.createQueryBuilder().update(User)
-            .set(query)
-            .where('id = :id', { id })
-            .execute()
+    const update = await this.context.createQueryBuilder().update(User).set(query).where('id = :id', { id }).execute()
 
-        if (update.affected === 0) throw new BadRequestException('Renter not found')
+    if (update.affected === 0) throw new BadRequestException('Renter not found')
 
-        return this.context.findOneOrFail({where: { id }})
-    }
+    return this.context.findOneOrFail({ where: { id } })
+  }
 }

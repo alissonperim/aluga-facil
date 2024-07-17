@@ -4,18 +4,18 @@ import { NextFunction, Request, Response } from 'express'
 import { container } from 'tsyringe'
 
 interface CreateRenterInput extends Request {
-    body: ICreateRenter
-} 
+  body: ICreateRenter
+}
 
 export const createRenterHandler = async (req: CreateRenterInput, res: Response, next: NextFunction) => {
-    const { body } = req
+  const { body } = req
 
-    try {
-        const usecase = container.resolve<ICreateRenterUseCase>('CreateRenterUseCase')
-        const response = await usecase.execute(body)
+  try {
+    const usecase = container.resolve<ICreateRenterUseCase>('CreateRenterUseCase')
+    const response = await usecase.execute(body)
 
-        return res.created(response)
-    } catch (error) {
-        next(error)
-    }
-} 
+    return res.created(response)
+  } catch (error) {
+    next(error)
+  }
+}

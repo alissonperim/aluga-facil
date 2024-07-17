@@ -7,14 +7,14 @@ import { Renter } from '@entities/renter'
 
 @injectable()
 export class UpdateRenterUseCase implements IUpdateRenterUseCase {
-    constructor(
-        @inject('UpdateRenterRepository')
-        private readonly repository: IUpdateRenterRepository
-    ){}
-    
-    async execute (id: string, data: DeepPartial<Renter>): Promise<IRenter> {
-        const renter = await this.repository.update(id, data)
+  constructor(
+    @inject('UpdateRenterRepository')
+    private readonly repository: IUpdateRenterRepository,
+  ) {}
 
-        return renter as IRenter
-    }
+  async execute(id: string, data: DeepPartial<Renter>): Promise<IRenter> {
+    const renter = await this.repository.update(id, data)
+
+    return renter as IRenter
+  }
 }
