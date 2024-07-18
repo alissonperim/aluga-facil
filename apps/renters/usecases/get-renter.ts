@@ -1,7 +1,8 @@
 import { inject, injectable } from 'tsyringe'
 import { IRenter } from '@packages/types'
 import { IGetRenterUseCase } from './contracts/get-renter'
-import { IGetRenterRepository } from '../repositories/contracts'
+import { IGetRenterRepository } from '@renters/repositories/contracts'
+import { renterDto } from '@renters/domain/renter-dto'
 
 @injectable()
 export class GetRenterUseCase implements IGetRenterUseCase {
@@ -13,6 +14,6 @@ export class GetRenterUseCase implements IGetRenterUseCase {
   async execute(id: string): Promise<IRenter> {
     const renter = await this.repository.get(id)
 
-    return renter as IRenter
+    return renterDto(renter)
   }
 }

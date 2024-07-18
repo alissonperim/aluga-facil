@@ -1,18 +1,18 @@
-import { IGetUserUseCase } from '@users/usecases/contracts'
+import { IGetRenterUseCase } from '@renters/usecases/contracts/get-renter'
 import { NextFunction, Request, Response } from 'express'
 import { container } from 'tsyringe'
 
-interface GetUserInput extends Request {
+interface GetRenterInput extends Request {
   params: {
     id: string
   }
 }
 
-export const getUserHandler = async (req: GetUserInput, res: Response, next: NextFunction) => {
+export const getRenterHandler = async (req: GetRenterInput, res: Response, next: NextFunction) => {
   const { id } = req.params
 
   try {
-    const usecase = container.resolve<IGetUserUseCase>('GetUserUseCase')
+    const usecase = container.resolve<IGetRenterUseCase>('GetRenterUseCase')
     const response = await usecase.execute(id)
 
     res.ok(response)
