@@ -40,7 +40,27 @@ export const createRenterSchema = yup
         otherwise: () =>
           yup.mixed<MaritalStatus>().oneOf(Object.values(MaritalStatus)).notRequired().nullable().default(undefined),
       }),
-    document: yup.string().required().min(11).max(11),
+    document: yup
+      .string()
+      .when('isRealState', {
+        is: false,
+        then: () => yup.string().length(11).required(),
+        otherwise: () => yup.string().length(14).required(),
+      })
+      .test('document-type', 'document must be a valid CPF or CNPJ', (value, context) => {
+        if (context.parent.isRealState) {
+          return value.length === 14
+        }
+
+        return value.length === 11
+      }),
+    fantasyName: yup.string().when('isRealState', {
+      is: false,
+      then: () => yup.string().notRequired().nullable().default(undefined),
+      otherwise: () => yup.string().required(),
+    }),
+    isRealState: yup.boolean().required(),
     address: addressSchema,
   })
+  .required()
   .noUnknown()

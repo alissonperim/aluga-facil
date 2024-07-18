@@ -1,2 +1,6 @@
 export * from './user'
 export * from './renter'
+export * from './property'
+export * from './fee'
+export * from './contract'
+export * from './base'

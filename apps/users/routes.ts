@@ -22,4 +22,4 @@ router.put(
 router.get('/:id', pathParamsValidations(getUserSchema), openDbConnection, getUserHandler)
 router.get('/', openDbConnection, listUsersHandler)
 
-export { router as userRouter }
+export { router as usersRoutes }

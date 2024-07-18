@@ -1,7 +1,8 @@
-import { Column, Entity, JoinColumn, OneToMany } from 'typeorm'
+import { BeforeInsert, Column, Entity, JoinColumn, OneToMany } from 'typeorm'
 import { PersonalData } from './personal-data'
 import { Property } from './property'
 import { Contract } from './contract'
+import { DOMAIN, ulidGenerator } from '@shared/utils'
 
 @Entity('renters')
 export class Renter extends PersonalData {
@@ -49,4 +50,8 @@ export class Renter extends PersonalData {
   //     }
   // )
   // operators!: Operator[]
+  @BeforeInsert()
+  protected generateId() {
+    this.id = ulidGenerator(DOMAIN.renter)
+  }
 }
