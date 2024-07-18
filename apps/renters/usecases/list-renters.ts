@@ -3,6 +3,7 @@ import { inject, injectable } from 'tsyringe'
 import { IListResponse } from '@shared/utils/list-response'
 import { IListRentersUseCase } from './contracts/list-renters'
 import { IListRentersRepository } from '../repositories/contracts'
+import { renterDto } from '@renters/domain/renter-dto'
 
 @injectable()
 export class ListRentersUseCase implements IListRentersUseCase {
@@ -14,7 +15,7 @@ export class ListRentersUseCase implements IListRentersUseCase {
     const renters = await this.repository.list()
 
     return {
-      data: renters as IRenter[],
+      data: renters.map(renter => renterDto(renter)),
     }
   }
 }
