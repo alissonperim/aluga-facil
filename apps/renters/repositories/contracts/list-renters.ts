@@ -1,5 +1,6 @@
 import { Renter } from '@entities/renter'
+import { ListRentersQueryStringParams } from '@renters/handlers/list'
 
 export interface IListRentersRepository {
-  list(): Promise<Renter[]>
+  list(params: ListRentersQueryStringParams): Promise<Renter[]>
 }

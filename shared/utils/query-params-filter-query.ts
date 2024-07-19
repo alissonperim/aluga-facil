@@ -1,4 +1,4 @@
-import { camelCaseToSnakeCase } from './camel-case-to-sanek-case'
+import { camelCaseToSnakeCase } from './camel-case-to-snake-case'
 
 interface IQueryParams<T> {
   queryParams: T
