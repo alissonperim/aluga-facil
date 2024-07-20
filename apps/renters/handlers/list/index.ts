@@ -18,7 +18,6 @@ export const listRentersHandler = async (req: ListRentersInput, res: Response, n
   try {
     const usecase = container.resolve<IListRentersUseCase>('ListRentersUseCase')
     const renters = await usecase.execute(params)
-    console.log('RENTEEEERRRRSSSSS HANDLER', renters)
     res.ok(renters)
   } catch (error) {
     next(error)

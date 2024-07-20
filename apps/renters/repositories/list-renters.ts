@@ -10,28 +10,11 @@ import { filterQuery } from '@shared/utils/query-params-filter-query'
 export class ListRentersRepository implements IListRentersRepository {
   private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
   async list(params: ListRentersQueryStringParams): Promise<Renter[]> {
-    const queryParams = params
-    const { query, values } = filterQuery({ queryParams, tableName: 'renters' })
-    console.log(query)
-
-    const renters = await this.context.query(query, values)
-    console.log('RENTERSSSSS REPO', renters)
-
-    const rentersParsed: Renter[] = renters.map((renter: Renter) => {
-      return toCamelCase(renter)
+    const qb = filterQuery<ListRentersQueryStringParams, Renter>({
+      queryParams: params,
+      queryBuilder: this.context.createQueryBuilder('renters'),
     })
 
-    console.log('RESULLLLLT', rentersParsed)
-
-    return rentersParsed
+    return qb.leftJoinAndSelect('renters.address', 'address').getMany()
   }
-}
-
-const toCamelCase = <T>(params: T) => {
-  const result = {}
-  for (const key in params) {
-    const newKey = key.replace(/_([a-z])/g, g => g[1].toUpperCase())
-    result[newKey] = params[key]
-  }
-  return result
 }
