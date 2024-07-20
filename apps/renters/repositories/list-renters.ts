@@ -10,11 +10,13 @@ import { filterQuery } from '@shared/utils/query-params-filter-query'
 export class ListRentersRepository implements IListRentersRepository {
   private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
   async list(params: ListRentersQueryStringParams): Promise<Renter[]> {
+    const tableAlias = 'renter'
     const qb = filterQuery<ListRentersQueryStringParams, Renter>({
       queryParams: params,
-      queryBuilder: this.context.createQueryBuilder('renters'),
+      queryBuilder: this.context.createQueryBuilder(tableAlias),
+      tableAlias,
     })
 
-    return qb.leftJoinAndSelect('renters.address', 'address').getMany()
+    return qb.leftJoinAndSelect(`${tableAlias}.address`, 'address').getMany()
   }
 }
