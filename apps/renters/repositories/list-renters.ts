@@ -15,10 +15,6 @@ export class ListRentersRepository implements IListRentersRepository {
       queryBuilder: this.context.createQueryBuilder('renters'),
     })
 
-    Object.keys(params).forEach(key => {
-      qb.orWhere(`renters.${key} = :${key}`, { [key]: params[key] })
-    })
-
     return qb.leftJoinAndSelect('renters.address', 'address').getMany()
   }
 }
