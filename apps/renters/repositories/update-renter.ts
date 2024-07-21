@@ -1,4 +1,3 @@
-import { User } from '@entities/user'
 import { DataSourceSingleton } from '@infra/datasource-singleton'
 import { DeepPartial, Repository } from 'typeorm'
 import { injectable } from 'tsyringe'
@@ -15,9 +14,11 @@ export class UpdateRenterRepository implements IUpdateRenterRepository {
   async update(id: string, data: DeepPartial<IRenter>): Promise<Renter> {
     const query = updateDbSetQuery<DeepPartial<IRenter>>(data)
 
-    const update = await this.context.createQueryBuilder().update(User).set(query).where('id = :id', { id }).execute()
+    const update = await this.context.createQueryBuilder().update(Renter).set(query).where('id = :id', { id }).execute()
 
-    if (update.affected === 0) throw new BadRequestException('Renter not found')
+    if (update.affected === 0) {
+      throw new BadRequestException('Renter not found')
+    }
 
     return this.context.findOneOrFail({ where: { id } })
   }
