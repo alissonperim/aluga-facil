@@ -3,7 +3,6 @@ import { IRenter } from '@packages/types'
 import { DeepPartial } from 'typeorm'
 import { IUpdateRenterUseCase } from './contracts/update-renter'
 import { IUpdateRenterRepository } from '../repositories/contracts'
-import { Renter } from '@entities/renter'
 
 @injectable()
 export class UpdateRenterUseCase implements IUpdateRenterUseCase {
@@ -12,7 +11,7 @@ export class UpdateRenterUseCase implements IUpdateRenterUseCase {
     private readonly repository: IUpdateRenterRepository,
   ) {}
 
-  async execute(id: string, data: DeepPartial<Renter>): Promise<IRenter> {
+  async execute(id: string, data: DeepPartial<IRenter>): Promise<IRenter> {
     const renter = await this.repository.update(id, data)
 
     return renter as IRenter

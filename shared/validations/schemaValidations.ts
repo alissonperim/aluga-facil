@@ -5,7 +5,7 @@ export const schemaValidations = (schema: yup.Schema) => async (req: Request, re
   const bodyData = req?.body
 
   try {
-    await schema.validate(bodyData, { abortEarly: false, recursive: true })
+    await schema.validate(bodyData, { abortEarly: false, recursive: true, stripUnknown: false })
     next()
   } catch (error) {
     return res.status(400).json({ message: error.errors })
@@ -29,7 +29,7 @@ export const queryStringValidations =
     const data = req.query
 
     try {
-      await schema.validate(data, { abortEarly: false, recursive: true })
+      await schema.validate(data, { abortEarly: false, recursive: true, stripUnknown: false })
       next()
     } catch (error) {
       return res.status(400).json({ message: error.errors })
