@@ -11,9 +11,11 @@ export class ListRentersRepository implements IListRentersRepository {
   private readonly context: Repository<Renter> = DataSourceSingleton.getRepositoy(Renter)
   async list(params: ListRentersQueryStringParams): Promise<Renter[]> {
     const tableAlias = 'renter'
-    const qb = filterQuery<ListRentersQueryStringParams, Renter>({
+    const qb = this.context.createQueryBuilder(tableAlias)
+
+    filterQuery<ListRentersQueryStringParams, Renter>({
       queryParams: params,
-      queryBuilder: this.context.createQueryBuilder(tableAlias),
+      queryBuilder: qb,
       tableAlias,
     })
 
