@@ -35,6 +35,7 @@ export class Renter extends PersonalData {
   @Column({
     name: 'contracts_ids',
     type: 'simple-array',
+    nullable: true,
   })
   contractsIds!: string[]
 
@@ -47,6 +48,7 @@ export class Renter extends PersonalData {
   @Column({
     name: 'rent_properties_ids',
     type: 'simple-array',
+    nullable: true,
   })
   rentPropertiesIds!: string[]
 

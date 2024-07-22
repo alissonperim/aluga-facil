@@ -32,6 +32,7 @@ export class Property extends Base {
   @Column({
     type: 'varchar',
     length: 31,
+    nullable: true,
   })
   renterId!: string
 
@@ -41,6 +42,7 @@ export class Property extends Base {
   @Column({
     type: 'varchar',
     length: 31,
+    nullable: true,
   })
   contractId!: string
 

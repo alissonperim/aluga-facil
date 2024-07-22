@@ -11,6 +11,7 @@ export class Owner extends PersonalData {
   @Column({
     type: 'simple-array',
     name: 'properties_ids',
+    nullable: true,
   })
   propertiesIds!: string[]
 }
