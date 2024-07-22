@@ -1,4 +1,4 @@
-import { BaseDomain } from './base'
+import { IAddress, BaseDomain, IContract, IOwner, IRenter } from '.'
 
 export enum PropertyType {
   casa_germinada = 'casa germinada',
@@ -12,4 +12,19 @@ export enum PropertyType {
   studio = 'studio',
 }
 
-export interface IProperty extends BaseDomain {}
+export interface IProperty extends BaseDomain {
+  address: IAddress
+  addressId: string
+  owners: IOwner[]
+  ownersIds: string[]
+  renter: IRenter
+  renterId: string
+  contract: IContract
+  contractId: string
+  dimension: number
+  description: string
+  rentalPrice: number
+  type: PropertyType
+  insuranceRequired: boolean
+  guarantorRequired: boolean
+}

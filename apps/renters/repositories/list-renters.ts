@@ -19,6 +19,6 @@ export class ListRentersRepository implements IListRentersRepository {
       tableAlias,
     })
 
-    return qb.leftJoinAndSelect(`${tableAlias}.address`, 'address').getMany()
+    return qb.getMany()
   }
 }

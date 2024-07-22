@@ -26,7 +26,7 @@ export class Fee extends Base {
     type: 'enum',
     enum: FeeType,
   })
-  type!: string
+  type!: FeeType
 
   @ManyToMany(() => Contract, contract => contract.fees)
   contracts!: Contract[]

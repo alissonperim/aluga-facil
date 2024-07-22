@@ -15,6 +15,7 @@ export class Base {
     unique: true,
     nullable: false,
     primary: true,
+    length: 31,
   })
   id!: string
 
