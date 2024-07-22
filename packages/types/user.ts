@@ -15,7 +15,7 @@ export interface IUser {
   email: string
   document: string
   maritalStatus: MaritalStatus
-  address: IAddress
+  address?: IAddress
   birthDate: Date
   createdAt: Date
   updatedAt: Date

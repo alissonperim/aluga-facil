@@ -48,7 +48,7 @@ export class PersonalData extends Base {
     length: 11,
     unique: true,
   })
-  protected document!: string
+  document!: string
 
   @Column({
     name: 'birth_date',
@@ -60,4 +60,9 @@ export class PersonalData extends Base {
   @OneToOne(() => Address, { eager: true, nullable: true, cascade: true, onUpdate: 'CASCADE' })
   @JoinColumn()
   address?: Relation<Address>
+
+  @Column({
+    type: 'varchar',
+  })
+  addressId!: string
 }

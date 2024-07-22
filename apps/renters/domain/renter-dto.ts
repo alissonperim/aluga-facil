@@ -16,6 +16,10 @@ export const renterDto = ({
   createdAt,
   updatedAt,
   deletedAt,
+  addressId,
+  contractsIds,
+  rentProperties,
+  rentPropertiesIds,
 }: Entity): IRenter => {
   return {
     id,
@@ -32,5 +36,9 @@ export const renterDto = ({
     fantasyName,
     document,
     isRealState,
+    addressId,
+    contractsIds,
+    rentProperties,
+    rentPropertiesIds,
   }
 }

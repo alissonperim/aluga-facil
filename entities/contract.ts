@@ -10,15 +10,40 @@ export class Contract extends Base {
   @ManyToOne(() => User)
   locators!: User[]
 
+  @Column({
+    type: 'simple-array',
+    name: 'locators_ids',
+  })
+  locatorsIds!: string[]
+
   @OneToMany(() => Property, property => property.contract)
   properties!: Property[]
+
+  @Column({
+    type: 'simple-array',
+    name: 'properties_ids',
+  })
+  propertiesIds!: string[]
 
   @ManyToOne(() => Renter, renter => renter.contracts)
   renter!: Renter
 
+  @Column({
+    type: 'varchar',
+    length: 31,
+    name: 'renter_id',
+  })
+  renterId!: string
+
   @ManyToMany(() => Fee, fee => fee.contracts)
   @JoinTable()
   fees!: Fee[]
+
+  @Column({
+    type: 'simple-array',
+    name: 'fees_ids',
+  })
+  feesIds!: string[]
 
   // Esse campo será o id do documento salvo em um bucket
   @Column({

@@ -32,11 +32,23 @@ export class Renter extends PersonalData {
   @OneToMany(() => Contract, contract => contract.renter)
   contracts!: Contract[]
 
+  @Column({
+    name: 'contracts_ids',
+    type: 'simple-array',
+  })
+  contractsIds!: string[]
+
   @OneToMany(() => Property, property => property.renter)
   @JoinColumn({
     name: 'rent_properties',
   })
   rentProperties!: Property[]
+
+  @Column({
+    name: 'rent_properties_ids',
+    type: 'simple-array',
+  })
+  rentPropertiesIds!: string[]
 
   // @OneToMany(() => Operator)
   // @Column(

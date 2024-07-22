@@ -1,6 +1,4 @@
-import { Contract } from '@entities/contract'
-import { IAddress } from './address'
-import { BaseDomain } from './base'
+import { IContract, IProperty, IAddress, BaseDomain } from '.'
 
 export interface IRenter extends BaseDomain {
   name?: string
@@ -8,9 +6,13 @@ export interface IRenter extends BaseDomain {
   phoneNumber: string
   email: string
   birthDate?: Date
-  address: IAddress
-  contracts?: Contract[]
+  address?: IAddress
+  contracts?: IContract[]
+  rentProperties: IProperty[]
   fantasyName?: string
   document: string
   isRealState?: boolean
+  addressId?: string
+  contractsIds?: string[]
+  rentPropertiesIds?: string[]
 }

@@ -11,23 +11,49 @@ export class Property extends Base {
   @OneToOne(() => Address, { eager: true, cascade: true })
   address!: Address
 
+  @Column({
+    type: 'varchar',
+    length: 31,
+  })
+  addressId!: string
+
   @ManyToMany(() => Owner, owner => owner.properties)
   owners!: Owner[]
 
+  @Column({
+    type: 'simple-array',
+    name: 'owners_ids',
+  })
+  ownersIds!: string[]
+
   @ManyToOne(() => Renter, renter => renter.rentProperties)
   renter!: Renter
+
+  @Column({
+    type: 'varchar',
+    length: 31,
+  })
+  renterId!: string
 
   @ManyToOne(() => Contract, contract => contract.properties)
   contract!: Contract
 
   @Column({
+    type: 'varchar',
+    length: 31,
+  })
+  contractId!: string
+
+  @Column({
     type: 'decimal',
+    nullable: true,
   })
   dimension!: number
 
   @Column({
     type: 'varchar',
     length: 360,
+    nullable: true,
   })
   description!: string
 
