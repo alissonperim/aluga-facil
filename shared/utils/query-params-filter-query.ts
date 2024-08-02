@@ -6,6 +6,11 @@ interface IQueryParams<P, B> {
   tableAlias?: string
 }
 
+/**
+ * @param P represents the query parameters
+ * @param B represents the entity
+ * @returns The query builder received with the filters applied
+ */
 export const filterQuery = <P, B>({ queryParams, queryBuilder, tableAlias }: IQueryParams<P, B>) => {
   Object.keys(queryParams).forEach(key => {
     queryBuilder.orWhere(`${tableAlias}.${key} = :${key}`, { [key]: queryParams[key] })

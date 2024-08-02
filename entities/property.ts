@@ -1,10 +1,11 @@
-import { Column, Entity, ManyToMany, ManyToOne, OneToOne } from 'typeorm'
+import { BeforeInsert, Column, Entity, ManyToMany, ManyToOne, OneToOne } from 'typeorm'
 import { Base } from './base'
 import { Address } from './address'
 import { PropertyType } from '@packages/types/property'
 import { Owner } from './owner'
 import { Renter } from './renter'
 import { Contract } from './contract'
+import { DOMAIN, ulidGenerator } from '@shared/utils'
 
 @Entity('properties')
 export class Property extends Base {
@@ -82,4 +83,9 @@ export class Property extends Base {
     name: 'guarantor_required',
   })
   guarantorRequired!: boolean
+
+  @BeforeInsert()
+  protected generateId() {
+    this.id = ulidGenerator(DOMAIN.property)
+  }
 }
