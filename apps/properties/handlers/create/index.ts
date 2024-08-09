@@ -1,17 +1,17 @@
-import { ICreateRenter } from 'apps/renters/contracts'
-import { ICreateRenterUseCase } from 'apps/renters/usecases/contracts/create-renter'
+import { ICreateProperty } from '@properties/contracts'
+import { ICreatePropertyUseCase } from '@properties/usecases/contracts'
 import { NextFunction, Request, Response } from 'express'
 import { container } from 'tsyringe'
 
-interface CreateRenterInput extends Request {
-  body: ICreateRenter
+interface CreatePropertyParams extends Request {
+  body: ICreateProperty
 }
 
-export const createRenterHandler = async (req: CreateRenterInput, res: Response, next: NextFunction) => {
+export const createRenterHandler = async (req: CreatePropertyParams, res: Response, next: NextFunction) => {
   const { body } = req
 
   try {
-    const usecase = container.resolve<ICreateRenterUseCase>('CreateRenterUseCase')
+    const usecase = container.resolve<ICreatePropertyUseCase>('CreatePropertyUseCase')
     const response = await usecase.execute(body)
 
     return res.created(response)

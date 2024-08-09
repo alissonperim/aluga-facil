@@ -6,6 +6,7 @@ export const DOMAIN = {
   address: 'addr_',
   renter: 'rent_',
   property: 'prop_',
+  guarantor: 'guar_',
 } as const
 
 export const ulidGenerator = (domain: string): string => {

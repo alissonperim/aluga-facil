@@ -1,22 +1,21 @@
 import { container } from 'tsyringe'
 import { NextFunction, Request, Response } from 'express'
-import { IListRentersUseCase } from '@renters/usecases/contracts'
 import * as core from 'express-serve-static-core'
+import { IListPropertiesUseCase } from '@properties/usecases/contracts'
 
-export interface ListRentersQueryStringParams extends core.Query {
-  document?: string
-  email?: string
-  phoneNumber?: string
+export interface ListPropertiesQueryParams extends core.Query {
+  renter?: string
+  owner?: string
 }
 
-interface ListRentersInput extends Request {
-  query: ListRentersQueryStringParams
+interface ListPropertiesParams extends Request {
+  query: ListPropertiesQueryParams
 }
 
-export const listRentersHandler = async (req: ListRentersInput, res: Response, next: NextFunction) => {
+export const listRentersHandler = async (req: ListPropertiesParams, res: Response, next: NextFunction) => {
   const params = req.query
   try {
-    const usecase = container.resolve<IListRentersUseCase>('ListRentersUseCase')
+    const usecase = container.resolve<IListPropertiesUseCase>('ListPropertiesUseCase')
     const renters = await usecase.execute(params)
     res.ok(renters)
   } catch (error) {

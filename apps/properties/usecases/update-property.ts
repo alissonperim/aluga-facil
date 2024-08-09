@@ -1,19 +1,20 @@
 import { inject, injectable } from 'tsyringe'
-import { IRenter } from '@packages/types'
+import { IProperty } from '@packages/types'
 import { DeepPartial } from 'typeorm'
-import { IUpdateRenterUseCase } from './contracts/update-renter'
-import { IUpdateRenterRepository } from '../repositories/contracts'
+import { IUpdatePropertyUseCase } from './contracts'
+import { IUpdatePropertyRepository } from '@properties/repositories/contracts'
+import { propertyDto } from '@properties/domain/property-dto'
 
 @injectable()
-export class UpdateRenterUseCase implements IUpdateRenterUseCase {
+export class UpdatePropertyUseCase implements IUpdatePropertyUseCase {
   constructor(
-    @inject('UpdateRenterRepository')
-    private readonly repository: IUpdateRenterRepository,
+    @inject('UpdatePropertyRepository')
+    private readonly repository: IUpdatePropertyRepository,
   ) {}
 
-  async execute(id: string, data: DeepPartial<IRenter>): Promise<IRenter> {
-    const renter = await this.repository.update(id, data)
+  async execute(id: string, data: DeepPartial<IProperty>): Promise<IProperty> {
+    const property = await this.repository.update(id, data)
 
-    return renter as IRenter
+    return propertyDto(property)
   }
 }

@@ -1,22 +1,22 @@
-import { IRenter } from '@packages/types'
+import { IProperty } from '@packages/types'
 import { inject, injectable } from 'tsyringe'
 import { IListResponse } from '@shared/utils/list-response'
-import { IListRentersUseCase } from './contracts/list-renters'
-import { IListRentersRepository } from '../repositories/contracts'
-import { renterDto } from '@renters/domain/renter-dto'
-import { ListRentersQueryStringParams } from '@renters/handlers/list'
+import { IListPropertiesUseCase } from './contracts'
+import { IListPropertiesRepository } from '@properties/repositories/contracts'
+import { IListPropertiesQueryStringParams } from '@properties/contracts/list-properties'
+import { propertyDto } from '@properties/domain/property-dto'
 
 @injectable()
-export class ListRentersUseCase implements IListRentersUseCase {
+export class ListPropertiesUseCase implements IListPropertiesUseCase {
   constructor(
-    @inject('ListRentersRepository')
-    private readonly repository: IListRentersRepository,
+    @inject('ListPropertiesRepository')
+    private readonly repository: IListPropertiesRepository,
   ) {}
-  async execute(params: ListRentersQueryStringParams): Promise<IListResponse<IRenter>> {
-    const renters = await this.repository.list(params)
+  async execute(params: IListPropertiesQueryStringParams): Promise<IListResponse<IProperty>> {
+    const properties = await this.repository.list(params)
 
     return {
-      data: renters.map(renterDto),
+      data: properties.map(propertyDto),
     }
   }
 }

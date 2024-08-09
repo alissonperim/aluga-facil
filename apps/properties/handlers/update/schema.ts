@@ -1,41 +1,22 @@
-import { MaritalStatus } from '@packages/types'
+import { PropertyType } from '@packages/types'
 import { DOMAIN } from '@shared/utils'
 import * as yup from 'yup'
 
-export const updateRenterSchema = yup
-  .object()
-  .shape({
-    name: yup.string().when('isRealState', {
-      is: false,
-      then: () => yup.string().notRequired().nullable(),
-      otherwise: () => yup.string().notRequired().nullable().default(undefined),
-    }),
-    lastName: yup.string().when('isRealState', {
-      is: false,
-      then: () => yup.string().notRequired().nullable(),
-      otherwise: () => yup.string().notRequired().nullable().default(undefined),
-    }),
-    birthDate: yup.date().nullable(),
-    maritalStatus: yup
-      .mixed<MaritalStatus>()
-      .oneOf(Object.values(MaritalStatus))
-      .when('isRealState', {
-        is: false,
-        then: () => yup.mixed<MaritalStatus>().oneOf(Object.values(MaritalStatus)).notRequired().nullable(),
-        otherwise: () =>
-          yup.mixed<MaritalStatus>().oneOf(Object.values(MaritalStatus)).notRequired().nullable().default(undefined),
-      }),
-    fantasyName: yup.string().when('isRealState', {
-      is: false,
-      then: () => yup.string().notRequired().nullable().default(undefined),
-      otherwise: () => yup.string().notRequired().nullable(),
-    }),
-    isRealState: yup.boolean().notRequired().nullable(),
-  })
-  .required()
-  .noUnknown(true, 'Unknown fields to update renter is not allowed')
+export const updatePropertySchema = yup.object().shape({
+  addressId: yup
+    .string()
+    .test('Is not a valid id', value => value.startsWith(DOMAIN.address))
+    .optional(),
+  ownersIds: yup.array().of(yup.string().required()).optional(),
+  type: yup.mixed<PropertyType>().oneOf(Object.values(PropertyType)).optional(),
+  dimension: yup.number().notRequired().nullable(),
+  description: yup.string().notRequired().nullable(),
+  rentalPrice: yup.number().optional(),
+  insuranceRequired: yup.boolean().optional(),
+  guarantorsRequired: yup.boolean().optional(),
+})
 
-export const updateRenterPathSchema = yup.object().shape({
+export const updatePropertyPathSchema = yup.object().shape({
   id: yup
     .string()
     .test('Is not a valid id', value => value.startsWith(DOMAIN.renter))
