@@ -10,5 +10,5 @@ export interface ICreateProperty {
   description?: string
   rentalPrice: number
   insuranceRequired: boolean
-  guarantorRequired: boolean
+  guarantorsRequired: boolean
 }

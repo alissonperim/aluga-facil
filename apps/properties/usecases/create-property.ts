@@ -7,6 +7,7 @@ import { ICreateProperty } from '@properties/contracts/create-property'
 import { propertyDto } from '@properties/domain/property-dto'
 import { IRequesterRepository } from '@shared/repository/contracts'
 import { CreateException } from '@shared/exceptions/create-exception'
+import { Logger } from '@shared/logger'
 
 @injectable()
 export class CreatePropertyUseCase implements ICreatePropertyUseCase {
@@ -25,10 +26,12 @@ export class CreatePropertyUseCase implements ICreatePropertyUseCase {
     const [owners, renter] = await Promise.all([this.getOwners(ownersIds), this.getRenter(renterId)])
 
     if (!owners.length || owners.length !== ownersIds.length) {
+      Logger.error('Owners not found', { ownersIds })
       throw new CreateException('Owners not found')
     }
 
     if (!renter) {
+      Logger.error('Renter not found', { renterId })
       throw new CreateException('Renter not found')
     }
 

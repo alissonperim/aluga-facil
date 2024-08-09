@@ -1,10 +1,13 @@
+import { DOMAIN } from '@shared/utils'
 import * as yup from 'yup'
 
-export const listRentersSchema = yup
+export const listPropertiesSchema = yup
   .object()
   .shape({
-    document: yup.string().optional().nullable(),
-    email: yup.string().optional().nullable(),
-    phoneNumber: yup.string().optional().nullable(),
+    renter: yup
+      .string()
+      .test('Invalid property id', value => value.startsWith(DOMAIN.property))
+      .optional(),
+    owner: yup.string().optional(),
   })
   .noUnknown('Unknown fields to list renters is not allowed')

@@ -1,19 +1,19 @@
 import { inject, injectable } from 'tsyringe'
-import { IRenter } from '@packages/types'
-import { IGetRenterUseCase } from './contracts/get-renter'
-import { IGetRenterRepository } from '@renters/repositories/contracts'
-import { renterDto } from '@renters/domain/renter-dto'
+import { IProperty } from '@packages/types'
+import { IGetPropertyUseCase } from './contracts'
+import { IGetPropertyRepository } from '@properties/repositories/contracts'
+import { propertyDto } from '@properties/domain/property-dto'
 
 @injectable()
-export class GetRenterUseCase implements IGetRenterUseCase {
+export class GetPropertyUseCase implements IGetPropertyUseCase {
   constructor(
-    @inject('GetRenterRepository')
-    private readonly repository: IGetRenterRepository,
+    @inject('GetPropertyRepository')
+    private readonly repository: IGetPropertyRepository,
   ) {}
 
-  async execute(id: string): Promise<IRenter> {
-    const renter = await this.repository.get(id)
+  async execute(id: string): Promise<IProperty> {
+    const property = await this.repository.get(id)
 
-    return renterDto(renter)
+    return propertyDto(property)
   }
 }

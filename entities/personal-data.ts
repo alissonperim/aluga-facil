@@ -59,7 +59,7 @@ export class PersonalData extends Base {
 
   @OneToOne(() => Address, { eager: true, nullable: true, cascade: true, onUpdate: 'CASCADE' })
   @JoinColumn()
-  address?: Relation<Address>
+  address!: Relation<Address>
 
   @Column({
     type: 'varchar',

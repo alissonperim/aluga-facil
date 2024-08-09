@@ -1,36 +1,41 @@
 import {
-  CreateRenterRepository,
-  GetRenterRepository,
-  ListRentersRepository,
-  UpdateRenterRepository,
-} from '@renters/repositories'
+  CreatePropertyRepository,
+  GetPropertyRepository,
+  ListPropertiesRepository,
+  UpdatePropertyRepository,
+} from '@properties/repositories'
 import {
-  ICreateRenterRepository,
-  IGetRenterRepository,
-  IListRentersRepository,
-  IUpdateRenterRepository,
-} from '@renters/repositories/contracts'
-import { CreateRenterUseCase, GetRenterUseCase, ListRentersUseCase, UpdateRenterUseCase } from '@renters/usecases'
+  ICreatePropertyRepository,
+  IGetPropertyRepository,
+  IListPropertiesRepository,
+  IUpdatePropertyRepository,
+} from '@properties/repositories/contracts'
 import {
-  ICreateRenterUseCase,
-  IGetRenterUseCase,
-  IListRentersUseCase,
-  IUpdateRenterUseCase,
-} from '@renters/usecases/contracts'
+  CreatePropertyUseCase,
+  GetPropertyUseCase,
+  ListPropertiesUseCase,
+  UpdatePropertyUseCase,
+} from '@properties/usecases'
+import {
+  ICreatePropertyUseCase,
+  IGetPropertyUseCase,
+  IListPropertiesUseCase,
+  IUpdatePropertyUseCase,
+} from '@properties/usecases/contracts'
 import { container } from 'tsyringe'
 
 export class RentersDependencyInjection {
   static execute() {
     // UseCases
-    container.registerSingleton<ICreateRenterUseCase>('CreateRenterUseCase', CreateRenterUseCase)
-    container.registerSingleton<IGetRenterUseCase>('GetRenterUseCase', GetRenterUseCase)
-    container.registerSingleton<IListRentersUseCase>('ListRentersUseCase', ListRentersUseCase)
-    container.registerSingleton<IUpdateRenterUseCase>('UpdateRenterUseCase', UpdateRenterUseCase)
+    container.registerSingleton<ICreatePropertyUseCase>('CreatePropertyUseCase', CreatePropertyUseCase)
+    container.registerSingleton<IGetPropertyUseCase>('GetPropertyUseCase', GetPropertyUseCase)
+    container.registerSingleton<IListPropertiesUseCase>('ListPropertysUseCase', ListPropertiesUseCase)
+    container.registerSingleton<IUpdatePropertyUseCase>('UpdatePropertyUseCase', UpdatePropertyUseCase)
 
     // Repositories
-    container.registerSingleton<ICreateRenterRepository>('CreateRenterReposistory', CreateRenterRepository)
-    container.registerSingleton<IGetRenterRepository>('GetRenterRepository', GetRenterRepository)
-    container.registerSingleton<IListRentersRepository>('ListRentersRepository', ListRentersRepository)
-    container.registerSingleton<IUpdateRenterRepository>('UpdateRenterRepository', UpdateRenterRepository)
+    container.registerSingleton<ICreatePropertyRepository>('CreatePropertyReposistory', CreatePropertyRepository)
+    container.registerSingleton<IGetPropertyRepository>('GetPropertyRepository', GetPropertyRepository)
+    container.registerSingleton<IListPropertiesRepository>('ListPropertysRepository', ListPropertiesRepository)
+    container.registerSingleton<IUpdatePropertyRepository>('UpdatePropertyRepository', UpdatePropertyRepository)
   }
 }
