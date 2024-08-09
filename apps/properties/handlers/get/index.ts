@@ -8,7 +8,7 @@ interface GetPropertyParams extends Request {
   }
 }
 
-export const getRenterHandler = async (req: GetPropertyParams, res: Response, next: NextFunction) => {
+export const get = async (req: GetPropertyParams, res: Response, next: NextFunction) => {
   const { id } = req.params
 
   try {

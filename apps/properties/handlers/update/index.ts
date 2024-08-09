@@ -11,7 +11,7 @@ interface UpdatePropertyParams extends Request {
   }
 }
 
-export const updateRenterHandler = async (req: UpdatePropertyParams, res: Response, next: NextFunction) => {
+export const put = async (req: UpdatePropertyParams, res: Response, next: NextFunction) => {
   const { id } = req.params
   const data = req.body
 

@@ -7,7 +7,7 @@ interface CreatePropertyParams extends Request {
   body: ICreateProperty
 }
 
-export const createRenterHandler = async (req: CreatePropertyParams, res: Response, next: NextFunction) => {
+export const create = async (req: CreatePropertyParams, res: Response, next: NextFunction) => {
   const { body } = req
 
   try {

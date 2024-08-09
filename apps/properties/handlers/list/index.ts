@@ -12,7 +12,7 @@ interface ListPropertiesParams extends Request {
   query: ListPropertiesQueryParams
 }
 
-export const listRentersHandler = async (req: ListPropertiesParams, res: Response, next: NextFunction) => {
+export const list = async (req: ListPropertiesParams, res: Response, next: NextFunction) => {
   const params = req.query
   try {
     const usecase = container.resolve<IListPropertiesUseCase>('ListPropertiesUseCase')
