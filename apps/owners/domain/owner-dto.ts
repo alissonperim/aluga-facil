@@ -1,8 +1,8 @@
-import { User } from '@entities/user'
-import { IUser } from '@packages/types'
+import { Owner } from '@entities/owner'
+import { IOwner } from '@packages/types'
 import { IListResponse } from '@shared/utils/list-response'
 
-export const userDto = ({
+export const ownerDto = ({
   id,
   name,
   email,
@@ -13,9 +13,11 @@ export const userDto = ({
   lastName,
   maritalStatus,
   phoneNumber,
+  properties,
+  propertiesIds,
   updatedAt,
   deletedAt,
-}: User): IUser => {
+}: Owner): IOwner => {
   return {
     id,
     name,
@@ -24,6 +26,8 @@ export const userDto = ({
     createdAt,
     document,
     lastName,
+    properties,
+    propertiesIds,
     maritalStatus,
     address,
     phoneNumber,
@@ -32,8 +36,8 @@ export const userDto = ({
   }
 }
 
-export const listUsersDto = (users: User[]): IListResponse<IUser> => {
+export const listOwnersDto = (owners: Owner[]): IListResponse<IOwner> => {
   return {
-    data: users.map(userDto),
+    data: owners.map(ownerDto),
   }
 }

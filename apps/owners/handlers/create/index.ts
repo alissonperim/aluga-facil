@@ -1,17 +1,17 @@
-import { ICreateUser } from '@users/contracts'
-import { ICreateUserUseCase } from '@users/usecases/contracts/create-user'
+import { ICreateOwner } from '@owners/contracts'
+import { ICreateOwnerUseCase } from '@owners/usecases/contracts'
 import { NextFunction, Request, Response } from 'express'
 import { container } from 'tsyringe'
 
-interface CreateUserInput extends Request {
-  body: ICreateUser
+interface CreateOwnerParams extends Request {
+  body: ICreateOwner
 }
 
-export const createUserHandler = async (req: CreateUserInput, res: Response, next: NextFunction) => {
+export const create = async (req: CreateOwnerParams, res: Response, next: NextFunction) => {
   const { body } = req
 
   try {
-    const usecase = container.resolve<ICreateUserUseCase>('CreateUserUseCase')
+    const usecase = container.resolve<ICreateOwnerUseCase>('CreateOwnerUseCase')
     const response = await usecase.execute(body)
 
     return res.created(response)

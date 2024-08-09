@@ -15,7 +15,7 @@ const addressSchema = yup
   })
   .noUnknown()
 
-export const createUserSchema = yup
+export const createOwnerSchema = yup
   .object()
   .shape({
     email: yup.string().email().required(),
@@ -25,6 +25,7 @@ export const createUserSchema = yup
     birthDate: yup.date().nullable(),
     maritalStatus: yup.mixed<MaritalStatus>().oneOf(Object.values(MaritalStatus)).required(),
     document: yup.string().required().min(11).max(11),
+    propertiesIds: yup.array().of(yup.string()).optional(),
     address: addressSchema,
   })
   .noUnknown()
