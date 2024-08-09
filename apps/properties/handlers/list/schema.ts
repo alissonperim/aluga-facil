@@ -1,3 +1,4 @@
+import { DOMAIN } from '@shared/utils'
 import * as yup from 'yup'
 
 export const listPropertiesSchema = yup
@@ -5,7 +6,7 @@ export const listPropertiesSchema = yup
   .shape({
     renter: yup
       .string()
-      .test('Invalid renter id', value => value.startsWith('rent_'))
+      .test('Invalid property id', value => value.startsWith(DOMAIN.property))
       .optional(),
     owner: yup.string().optional(),
   })
