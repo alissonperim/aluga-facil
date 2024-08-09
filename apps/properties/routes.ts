@@ -23,4 +23,4 @@ router.put(
   put,
 )
 
-export { router as rentersRoutes }
+export { router as propertiesRoutes }
