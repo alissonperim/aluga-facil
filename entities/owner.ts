@@ -1,6 +1,7 @@
-import { Column, Entity, JoinTable, ManyToMany } from 'typeorm'
+import { BeforeInsert, Column, Entity, JoinTable, ManyToMany } from 'typeorm'
 import { PersonalData } from './personal-data'
 import { Property } from './property'
+import { DOMAIN, ulidGenerator } from '@shared/utils'
 
 @Entity('owners')
 export class Owner extends PersonalData {
@@ -14,4 +15,9 @@ export class Owner extends PersonalData {
     nullable: true,
   })
   propertiesIds!: string[]
+
+  @BeforeInsert()
+  generateUlid() {
+    this.id = ulidGenerator(DOMAIN.owner)
+  }
 }
