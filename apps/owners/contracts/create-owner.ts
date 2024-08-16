@@ -9,6 +9,7 @@ export interface ICreateOwner {
   document: string
   birthDate: Date
   address?: Address
+  addressId?: string
   propertiesIds?: string[]
   maritalStatus: MaritalStatus
 }

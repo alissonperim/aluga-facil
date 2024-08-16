@@ -19,7 +19,7 @@ import {
 } from '@owners/usecases/contracts'
 import { container } from 'tsyringe'
 
-export class UsersDependencyInjection {
+export class OwnersDependencyInjection {
   static execute() {
     // UseCases
     container.registerSingleton<ICreateOwnerUseCase>('CreateOwnerUseCase', CreateOwnerUseCase)

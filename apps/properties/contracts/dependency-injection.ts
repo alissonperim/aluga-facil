@@ -24,7 +24,7 @@ import {
 } from '@properties/usecases/contracts'
 import { container } from 'tsyringe'
 
-export class RentersDependencyInjection {
+export class PropertiesDependencyInjection {
   static execute() {
     // UseCases
     container.registerSingleton<ICreatePropertyUseCase>('CreatePropertyUseCase', CreatePropertyUseCase)
