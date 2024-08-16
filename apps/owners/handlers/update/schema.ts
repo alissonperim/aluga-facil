@@ -2,17 +2,19 @@ import { MaritalStatus } from '@packages/types'
 import { DOMAIN } from '@shared/utils'
 import * as yup from 'yup'
 
-export const updateUserSchema = yup
+export const updateOwnerSchema = yup
   .object()
   .shape({
     name: yup.string().notRequired().nullable(),
     lastName: yup.string().notRequired().nullable(),
     birthDate: yup.date().notRequired().nullable(),
     maritalStatus: yup.mixed<MaritalStatus>().oneOf(Object.values(MaritalStatus)).notRequired().nullable(),
+    propertiesIds: yup.array().of(yup.string()).notRequired().nullable(),
+    addressId: yup.string().notRequired().nullable(),
   })
   .noUnknown()
 
-export const updateUserPathSchema = yup.object().shape({
+export const updateOwnerPathSchema = yup.object().shape({
   id: yup
     .string()
     .test('Is not a valid id', value => value.startsWith(DOMAIN.user))
