@@ -12,7 +12,8 @@ import { OwnersDependencyInjection } from '@owners/contracts/dependency-injectio
 import { PropertiesDependencyInjection } from '@properties/contracts'
 import { SharedRepositoryDependencyInjection } from '@shared/repository/contracts/dependecy-injection'
 import helmet from 'helmet'
-import SuperTokens from 'supertokens-node/lib/build/supertokens'
+import { errorHandler } from 'supertokens-node/framework/express'
+import supertokens from 'supertokens-node'
 
 UsersDependencyInjection.execute()
 RentersDependencyInjection.execute()
@@ -21,11 +22,12 @@ PropertiesDependencyInjection.execute()
 SharedRepositoryDependencyInjection.execute()
 
 const app = express()
-SuperTokens.init(config)
+supertokens.init(config)
 
 midiffy(app)
 
 app.use(router)
+app.use(errorHandler())
 app.use(HttpExceptions)
 app.disable('x-powered-by')
 

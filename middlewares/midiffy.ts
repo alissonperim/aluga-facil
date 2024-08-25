@@ -6,6 +6,7 @@ import { middleware } from 'supertokens-node/framework/express'
 
 export const midiffy = (app: Express) => {
   app
+    .use(middleware())
     .use(express.json())
     .use(HttpResponses)
     .use(
@@ -15,5 +16,4 @@ export const midiffy = (app: Express) => {
         credentials: true,
       }),
     )
-    .use(middleware())
 }
