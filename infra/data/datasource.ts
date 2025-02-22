@@ -1,12 +1,6 @@
 import 'dotenv/config'
-import { Customer } from '@entities/customer'
 import { DataSource } from 'typeorm'
-import { Address } from '@entities/address'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
-import { Employee } from '@entities/employee'
-import { Company } from '@entities/company'
-import { Product } from '@entities/product'
-import { Laboratory } from '@entities/laboratory'
 
 const { DB_NAME, DB_PORT, DB_HOST, DB_PW, DB_USER } = process.env
 
@@ -18,7 +12,7 @@ export const AppDataSource = () => {
     username: DB_USER,
     password: DB_PW,
     database: DB_NAME,
-    entities: [Customer, Address, Employee, Company, Product, Laboratory],
+    entities: [],
     migrations: ['infra/migrations/*.ts'],
     poolSize: 20,
   })
@@ -39,7 +33,7 @@ export default new DataSource({
   username: DB_USER,
   password: DB_PW,
   database: DB_NAME,
-  entities: [Customer, Address, Employee, Company, Product, Laboratory],
+  entities: [],
   migrations: ['infra/migrations/*.ts'],
   namingStrategy: new SnakeNamingStrategy(),
 })

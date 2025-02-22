@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx watch server.ts",
+    "start": "tsx watch server.ts --include ./apps/*",
     "comment": "Ao startar migration:generate deve ser adicionado o path de onde será salvo a migration ex: ./src/data/migrations/NomeDaMigration",
     "typeorm": "npx typeorm-ts-node-commonjs -d infra/data/datasource.ts",
     "migration:generate": "npm run typeorm -- migration:generate infra/migrations/Migration --timestamp",

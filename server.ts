@@ -6,16 +6,12 @@ import { HttpExceptions } from '@shared/http-responses'
 import { router } from './routes'
 import { CustomersDependencyInjection } from '@customers/contracts'
 import { EmployeesDependencyInjection } from '@employees/contracts'
-import { LaboratoriesDependencyInjection } from '@laboratories/contracts'
-import { ProductsDependencyInjection } from '@products/contracts'
 import { SharedRepositoryDependencyInjection } from '@shared/repository/contracts/dependecy-injection'
 import supertokens from 'supertokens-node'
 import config from '@sessions/super-tokens'
 
 CustomersDependencyInjection.execute()
 EmployeesDependencyInjection.execute()
-LaboratoriesDependencyInjection.execute()
-ProductsDependencyInjection.execute()
 SharedRepositoryDependencyInjection.execute()
 
 const app = express()
