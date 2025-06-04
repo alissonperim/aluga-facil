@@ -1,11 +1,9 @@
-import { ICustomer, BaseDomain, IFee, IProperty, IRenter } from '.'
+import { ICustomer, BaseDomain, IFee } from '.'
 
 export interface IContract extends BaseDomain {
   locators: ICustomer[]
   locatorsIds: string[]
-  properties: IProperty[]
   propertiesIds: string[]
-  renter: IRenter
   renterId: string
   fees: IFee[]
   feesIds: string[]
